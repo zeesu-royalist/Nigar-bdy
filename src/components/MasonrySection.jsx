@@ -49,18 +49,18 @@ export default function MasonrySection() {
           <div className="flex items-center gap-2 mb-2">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ff5a1f]/10 border border-[#ff5a1f]/30 text-[10px] sm:text-xs tracking-[0.2em] uppercase text-[#ff5a1f] font-medium">
               <Sparkles className="w-3 h-3 text-[#ff5a1f]" />
-              Visual Anthology &bull; 2025
+              Chapter IV &bull; Picture Perfect ✨
             </span>
           </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-[#efeee9]">
-            Moments &amp; Memories
+            Timeless Moments &amp; Memories
           </h2>
         </div>
 
         {/* Desktop description & Mobile quick controls */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
           <p className="text-xs sm:text-sm text-[#ff5a1f]/80 max-w-sm font-light leading-relaxed hidden sm:block">
-            An endless 3D spatial retrospective honoring every smile and golden memory of the birthday queen.
+            An endless 3D spatial retrospective honoring every smile, style, and golden memory of the birthday queen, Nigar.
           </p>
 
           {/* Quick interactive speed & direction controls */}
@@ -233,7 +233,7 @@ export default function MasonrySection() {
                 {birthdayGirlImages[lightboxIndex].title}
               </h3>
               <p className="text-[11px] sm:text-xs text-[#ff5a1f]/80 tracking-wider uppercase mt-0.5">
-                Happy Birthday Nigar &bull; 2025
+                Happy Birthday Nigar &bull; Cherished Forever 💖
               </p>
             </div>
           </div>

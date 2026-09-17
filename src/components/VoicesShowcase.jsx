@@ -3,90 +3,90 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-// 12 Curated cinematic portraits matching the floating screens in the reference image
+// 12 Curated celebratory portraits honoring Nigar around her center cutout
 const cardData = [
   {
     id: 1,
-    url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
-    name: "Aria",
-    role: "Voice Guide",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.07 PM.jpeg",
+    name: "Golden Glow",
+    role: "Birthday Star",
     yOffset: -50,
   },
   {
     id: 2,
-    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
-    name: "Elena",
-    role: "Advisor",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.08 PM.jpeg",
+    name: "Radiant Smile",
+    role: "Pure Joy",
     yOffset: 25,
   },
   {
     id: 3,
-    url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=80",
-    name: "Maya",
-    role: "Companion",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.09 PM.jpeg",
+    name: "Timeless Grace",
+    role: "Queen of Elegance",
     yOffset: -20,
   },
   {
     id: 4,
-    url: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&auto=format&fit=crop&q=80",
-    name: "Liam",
-    role: "Storyteller",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.10 PM.jpeg",
+    name: "Heart of Gold",
+    role: "Sweetest Soul",
     yOffset: 45,
   },
   {
     id: 5,
-    url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&auto=format&fit=crop&q=80",
-    name: "Sophia",
-    role: "Mentor",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.37 PM.jpeg",
+    name: "Starlight Aura",
+    role: "Forever Shining",
     yOffset: -60,
   },
   {
     id: 6,
-    url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80",
-    name: "Lucas",
-    role: "Philosopher",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.38 PM-2.jpeg",
+    name: "Elegance in Bloom",
+    role: "Graceful Charm",
     yOffset: 15,
   },
   {
     id: 7,
-    url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop&q=80",
-    name: "Clara",
-    role: "Historian",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.38 PM-3.jpeg",
+    name: "Serene Moments",
+    role: "Precious Charm",
     yOffset: -35,
   },
   {
     id: 8,
-    url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80",
-    name: "Ethan",
-    role: "Creator",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.38 PM-4.jpeg",
+    name: "Unstoppable Spirit",
+    role: "Magic & Spark",
     yOffset: 40,
   },
   {
     id: 9,
-    url: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&auto=format&fit=crop&q=80",
-    name: "Mira",
-    role: "Artist",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.38 PM.jpeg",
+    name: "Cherished Joy",
+    role: "Endless Laughter",
     yOffset: -15,
   },
   {
     id: 10,
-    url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop&q=80",
-    name: "Oliver",
-    role: "Explorer",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.39 PM.jpeg",
+    name: "Queen of the Day",
+    role: "Birthday Royalty",
     yOffset: 30,
   },
   {
     id: 11,
-    url: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&auto=format&fit=crop&q=80",
-    name: "Zara",
-    role: "Visionary",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.08 PM.jpeg",
+    name: "Forever Enchanting",
+    role: "Pure Magic",
     yOffset: -45,
   },
   {
     id: 12,
-    url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80",
-    name: "Noah",
-    role: "Thinker",
+    url: "/birthday girl images/WhatsApp Image 2026-09-17 at 9.08.07 PM.jpeg",
+    name: "Infinite Wishes",
+    role: "Always Blessed",
     yOffset: 20,
   },
 ];
@@ -205,23 +205,20 @@ export default function VoicesShowcase() {
 
       {/* Top Header Section (Exact typography & Apple badge) */}
       <div className="relative z-40 pt-6 sm:pt-12 px-4 sm:px-6 flex flex-col items-center text-center max-w-4xl pointer-events-none">
-        {/* Apple-style Featured Pick Badge */}
+        {/* Apple-style Birthday Special Badge */}
         <div className="flex items-center gap-1.5 mb-2 sm:mb-3 text-[#f59e0b] text-xs sm:text-sm font-medium tracking-wide">
-          <svg className="w-3.5 h-3.5 fill-[#f59e0b] drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]" viewBox="0 0 170 170">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12-14.42-6.19-9.35-11.1-20.12-14.75-32.31-3.64-12.18-5.46-23.71-5.46-34.58 0-15.02 3.8-27.42 11.41-37.2 7.6-9.78 17.06-14.77 28.38-14.97 4.13 0 9.17 1.25 15.12 3.75 5.95 2.5 9.87 3.86 11.76 4.08 2.29-.33 6.42-1.8 12.39-4.42 5.97-2.61 11.03-3.83 15.18-3.65 14.15.65 25.13 5.98 32.94 15.99-12.85 7.84-19.16 18.5-18.93 31.98.22 10.45 4.25 19.37 12.09 26.76 7.84 7.39 17.41 11.75 28.71 13.07-2.39 7.4-5.33 14.7-8.81 21.9zM119.22 33.64c0-7.84 2.83-15.35 8.49-22.53 5.66-7.18 12.63-11.75 20.91-13.71.22 1.3.33 2.5.33 3.6 0 7.84-3.05 15.67-9.14 23.49-6.09 7.82-13.27 12.29-21.54 13.4-.11-1.3-.22-2.5-.22-3.6z" />
-          </svg>
-          <span className="font-sans font-medium tracking-normal text-[#f59e0b]">Featured Pick</span>
+          <span className="text-sm">✨</span>
+          <span className="font-sans font-medium tracking-normal text-[#f59e0b]">Special Birthday Edition &bull; Celebrating Nigar</span>
         </div>
 
         {/* Large Elegant Editorial Headline */}
         <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-['Playfair_Display',Georgia,serif] text-[#f4f3ef] tracking-tight leading-[1.18] font-normal drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-          Speak with <span className="italic font-['Playfair_Display',Georgia,serif] font-normal text-white">voices</span> that once only lived in your imagination.
+          Happy Birthday to <span className="italic font-['Playfair_Display',Georgia,serif] font-normal text-white">Nigar</span>, the brightest star in our sky.
         </h2>
 
         {/* Subtitle */}
         <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-[15px] text-[#b4afa7] max-w-xl leading-relaxed font-sans font-light drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-          Meet AI guides, advisors, or friends whenever the moment calls.
-          <br className="hidden sm:inline" /> Simply pick the voice you need, and begin your dialogue.
+          Today the spotlight shines entirely on you &mdash; celebrating your radiant smile, timeless elegance, and the boundless happiness you bring into every life.
         </p>
       </div>
 
@@ -322,7 +319,7 @@ export default function VoicesShowcase() {
       {/* Bottom hint / drag instruction & scroll to birthday card */}
       <div className="relative z-40 pb-4 sm:pb-6 px-4 sm:px-6 flex flex-col items-center gap-2">
         <span className="text-[10px] sm:text-xs text-white/50 tracking-widest uppercase font-sans pointer-events-none">
-          Drag to rotate &bull; Hover to pause
+          Drag to orbit memories &bull; Hover to pause
         </span>
         <button
           type="button"
@@ -338,7 +335,7 @@ export default function VoicesShowcase() {
           }}
           className="flex items-center gap-1.5 text-xs text-[#ff5a1f] hover:text-white transition-all bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#ff5a1f]/40 hover:border-[#ff5a1f] shadow-[0_0_15px_rgba(255,90,31,0.25)] tracking-wider uppercase font-medium cursor-pointer"
         >
-          <span>Birthday Tribute</span>
+          <span>Begin Nigar&apos;s Story</span>
           <span className="animate-bounce text-xs leading-none">↓</span>
         </button>
       </div>

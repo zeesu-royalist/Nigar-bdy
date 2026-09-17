@@ -94,14 +94,14 @@ export default function VideoAccordionSection() {
             <div className="flex items-center gap-2 mb-2.5">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff5a1f]/10 border border-[#ff5a1f]/30 text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#ff5a1f] font-medium shadow-[0_0_20px_rgba(255,90,31,0.2)]">
                 <Film className="w-3.5 h-3.5 text-[#ff5a1f]" />
-                Chapter III &bull; Live in Motion
+                Chapter III &bull; Nigar in Motion 🎬
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#efeee9]">
-              Candid Chronicles
+              Candid Chronicles of Nigar
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-[#efeee9]/75 max-w-xl font-light mt-2 leading-relaxed">
-              Every burst of laughter, spontaneous dance, and golden glance captured across 12 motion reels. Hover or tap to expand each memory.
+              Every burst of laughter, spontaneous dance, and sweet golden smile captured across 12 live motion reels. Hover or tap to expand each memory of our birthday queen.
             </p>
           </div>
 
@@ -302,7 +302,7 @@ export default function VideoAccordionSection() {
                 {lightboxVideo.label}
               </h3>
               <p className="text-xs text-[#ff5a1f] tracking-wider uppercase mt-0.5">
-                {lightboxVideo.subtitle} &bull; Happy Birthday Nigar
+                {lightboxVideo.subtitle} &bull; Happy Birthday Nigar 💖
               </p>
             </div>
           </div>

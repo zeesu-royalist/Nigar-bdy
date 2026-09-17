@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Marcus — Bennet",
-  description: "Visuals Composer & Digital Crafter portfolio",
+  title: "Happy Birthday Nigar ✨ | Queen of Hearts",
+  description: "A special birthday celebration and interactive tribute dedicated to Nigar. Wishing you boundless joy, love, and smiles!",
 };
 
 export default function RootLayout({ children }) {

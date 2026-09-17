@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
-const navItems = ["Story", "Jobs", "Message"];
+const navItems = ["Memories", "Reels", "Wishes"];
 const socialItems = ["Instagram", "TikTok", "YouTube"];
 
 export default function Hero() {
@@ -35,8 +35,8 @@ export default function Hero() {
         style={{ animationDelay: "500ms" }}
       >
         <div className="marquee flex w-max whitespace-nowrap font-hn text-[16vh] sm:text-[26vh] leading-none text-[#efeee9] tracking-tight font-medium">
-          <span className="pr-[6vw] shrink-0">Marcus &mdash; Bennet&nbsp;</span>
-          <span className="pr-[6vw] shrink-0">Marcus &mdash; Bennet&nbsp;</span>
+          <span className="pr-[6vw] shrink-0">Nigar &mdash; Birthday Queen&nbsp;</span>
+          <span className="pr-[6vw] shrink-0">Nigar &mdash; Birthday Queen&nbsp;</span>
         </div>
       </div>
 
@@ -52,9 +52,9 @@ export default function Hero() {
           className="anim-fade-up flex flex-col"
           style={{ animationDelay: "1400ms" }}
         >
-          <span>Visuals Composer</span>
-          <span>Digital Crafter</span>
-          <span>Obsessed by The Office</span>
+          <span>Birthday Queen</span>
+          <span>Pure Radiance</span>
+          <span>Forever Loved</span>
         </div>
         {/* Center scroll indicator to 3D Showcase (now above) */}
         <button
@@ -79,14 +79,14 @@ export default function Hero() {
           className="anim-fade-up flex flex-col text-right"
           style={{ animationDelay: "1550ms" }}
         >
-          <span>A homage to</span>
-          <span>Marcus Holloway</span>
+          <span>Celebrating</span>
+          <span>Nigar&apos;s Special Day</span>
         </div>
       </footer>
 
       {/* Layer 5 (z-20): Front portrait (cutout overlay, above marquee, pointer-events none) */}
       <img
-        src="/images/ChatGPT Image Sep 17, 2026 at 09_59_52 PM.png"
+        src="/images/ChatGPT Image Sep 17, 2026 at 11_50_32 PM.png"
         alt="Portrait"
         className="absolute inset-0 h-full w-full object-cover pointer-events-none z-20 anim-rise-in"
         style={{ animationDelay: "300ms" }}
@@ -107,13 +107,13 @@ export default function Hero() {
 
       {/* Layer 6 (z-30): Header chrome */}
       <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
-        {/* Left: brand Marcus */}
+        {/* Left: brand Nigar */}
         <a
           href="#"
           className="font-hn text-lg tracking-wide anim-fade-up text-[#ff5a1f] hover:opacity-80 transition-opacity duration-300 font-medium"
           style={{ animationDelay: "800ms" }}
         >
-          Marcus
+          Nigar ✦
         </a>
 
         {/* Right cluster (desktop sm: and up) */}

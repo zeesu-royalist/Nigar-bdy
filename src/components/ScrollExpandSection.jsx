@@ -13,8 +13,8 @@ export default function ScrollExpandSection() {
       <ScrollExpand
         src="/birthday girl images/WhatsApp Image 2026-09-17 at 9.11.38 PM-3.jpeg"
         alt="Nigar - Birthday Tribute"
-        title="BUILT TO SHINE"
-        scrollHint="Scroll down to unfold the story ↓"
+        title="HAPPY BIRTHDAY NIGAR"
+        scrollHint="Scroll down to unfold Nigar's story ↓"
         useWindowScroll={true}
         objectFit="contain"
         ambientBackdrop={true}
@@ -33,13 +33,13 @@ export default function ScrollExpandSection() {
       >
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-4 text-center">
           <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#ff5a1f] font-semibold block mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
-            Chapter II &bull; Pure Radiance
+            Chapter II &bull; The Birthday Queen
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-[#efeee9] tracking-tight mb-3 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-            Every Smile, Everywhere
+            Every Smile, Pure Radiance
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-[#efeee9]/90 leading-relaxed font-light max-w-lg mx-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-            The frame opens up as you scroll, handing the entire spotlight to your unforgettable grace, boundless joy, and magnetic charm.
+            The frame expands as you scroll, dedicating the entire screen to your unforgettable grace, infectious laughter, and magnetic charm. Wishing you the happiest birthday, dearest Nigar!
           </p>
         </div>
       </ScrollExpand>
