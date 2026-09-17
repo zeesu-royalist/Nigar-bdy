@@ -3,14 +3,14 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Heart, Sparkles, PartyPopper, RotateCcw } from "lucide-react";
 
-// Web Audio API romantic chord synthesizer for zero external audio dependencies
+// Web Audio API chord synthesizer for zero external audio dependencies
 function playRomanticChime() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
     const ctx = new AudioContext();
 
-    // Sweet romantic harp arpeggio: C5, E5, G5, B5, C6, E6
+    // Sweet cheerful harp arpeggio: C5, E5, G5, B5, C6, E6
     const notes = [523.25, 659.25, 783.99, 987.77, 1046.5, 1318.51];
     const now = ctx.currentTime;
 
@@ -48,17 +48,17 @@ function triggerHaptic(pattern = 25) {
   }
 }
 
-// Static ambient floating hearts across the background
+// Static ambient floating symbols across the background
 const FLOATING_HEARTS = [
   { id: 1, x: 5, size: 20, duration: 9, delay: 0, opacity: 0.22, symbol: "💖" },
   { id: 2, x: 16, size: 24, duration: 12, delay: 2, opacity: 0.18, symbol: "✨" },
-  { id: 3, x: 30, size: 18, duration: 8, delay: 4, opacity: 0.25, symbol: "❤️" },
-  { id: 4, x: 45, size: 22, duration: 11, delay: 1, opacity: 0.16, symbol: "💕" },
-  { id: 5, x: 62, size: 26, duration: 13, delay: 3, opacity: 0.2, symbol: "🌸" },
-  { id: 6, x: 76, size: 16, duration: 7, delay: 5, opacity: 0.24, symbol: "💖" },
+  { id: 3, x: 30, size: 18, duration: 8, delay: 4, opacity: 0.25, symbol: "💛" },
+  { id: 4, x: 45, size: 22, duration: 11, delay: 1, opacity: 0.16, symbol: "🌸" },
+  { id: 5, x: 62, size: 26, duration: 13, delay: 3, opacity: 0.2, symbol: "✨" },
+  { id: 6, x: 76, size: 16, duration: 7, delay: 5, opacity: 0.24, symbol: "⭐" },
   { id: 7, x: 90, size: 22, duration: 10, delay: 2.5, opacity: 0.18, symbol: "✨" },
-  { id: 8, x: 22, size: 22, duration: 14, delay: 6, opacity: 0.14, symbol: "❤️" },
-  { id: 9, x: 52, size: 18, duration: 9, delay: 3.5, opacity: 0.22, symbol: "💕" },
+  { id: 8, x: 22, size: 22, duration: 14, delay: 6, opacity: 0.14, symbol: "🌸" },
+  { id: 9, x: 52, size: 18, duration: 9, delay: 3.5, opacity: 0.22, symbol: "💛" },
   { id: 10, x: 84, size: 20, duration: 11.5, delay: 0.5, opacity: 0.18, symbol: "✨" },
 ];
 
@@ -183,7 +183,7 @@ export default function LoveProposalSection() {
       "#efeee9",
       "#ff4d6d",
     ];
-    const heartSymbols = ["❤️", "💖", "💕", "✨", "🌸", "💍", "🥰"];
+    const celebrationSymbols = ["✨", "🌸", "⭐", "🎉", "💛", "🥰", "💫", "💖"];
 
     const newParticles = [];
     // Adjust particle count for mobile performance
@@ -210,7 +210,7 @@ export default function LoveProposalSection() {
         alpha: 1,
         color: colors[Math.floor(Math.random() * colors.length)],
         isEmoji,
-        emoji: heartSymbols[Math.floor(Math.random() * heartSymbols.length)],
+        emoji: celebrationSymbols[Math.floor(Math.random() * celebrationSymbols.length)],
         decay: (isMobile ? 0.007 : 0.005) + Math.random() * 0.007,
       });
     }
@@ -303,7 +303,7 @@ export default function LoveProposalSection() {
 
   return (
     <section
-      id="love-proposal"
+      id="like-section"
       className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center bg-black text-[#efeee9] font-hn overflow-hidden px-4 sm:px-8 py-10 sm:py-20 border-t border-[#ff5a1f]/20 select-none"
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
@@ -315,12 +315,12 @@ export default function LoveProposalSection() {
         className="fixed inset-0 w-full h-full pointer-events-none z-50"
       />
 
-      {/* Ambient glowing romantic full-screen gradient orbs */}
+      {/* Ambient glowing celebratory full-screen gradient orbs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] md:w-[900px] h-[320px] sm:h-[650px] md:h-[900px] bg-gradient-to-tr from-[#ff5a1f]/25 via-[#ff2a5f]/20 to-transparent rounded-full blur-[100px] sm:blur-[180px] md:blur-[220px] pointer-events-none -z-10" />
       <div className="absolute bottom-6 right-6 w-[200px] sm:w-[450px] h-[200px] sm:h-[450px] bg-[#ff2a5f]/15 rounded-full blur-[110px] sm:blur-[160px] pointer-events-none -z-10" />
       <div className="absolute top-6 left-6 w-[180px] sm:w-[400px] h-[180px] sm:h-[400px] bg-[#ff5a1f]/15 rounded-full blur-[100px] sm:blur-[150px] pointer-events-none -z-10" />
 
-      {/* Ambient rising romantic floating symbols across the whole screen */}
+      {/* Ambient rising celebratory floating symbols across the whole screen */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10 select-none">
         {FLOATING_HEARTS.map((item) => (
           <span
@@ -347,21 +347,21 @@ export default function LoveProposalSection() {
           /* FULL-SCREEN QUESTION (Mobile-Optimized)                         */
           /* ============================================================== */
           <div className="w-full flex flex-col items-center justify-center transition-all duration-500">
-            {/* Romantic Top Pill */}
+            {/* Friendly Top Pill */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#ff5a1f]/10 border border-[#ff5a1f]/35 text-[11px] sm:text-xs md:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#ff5a1f] font-semibold mb-4 sm:mb-8 shadow-[0_0_20px_rgba(255,90,31,0.25)]">
               <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#ff5a1f] animate-pulse" />
-              <span>A Special Question From My Heart 💖</span>
-              <Heart className="w-3 h-3 sm:w-4 sm:h-4 fill-[#ff5a1f] text-[#ff5a1f] animate-bounce" />
+              <span>A Fun Question Just For You ✨</span>
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-[#ff5a1f] animate-bounce" />
             </div>
 
             {/* Grand Question Headline - Fully Responsive */}
             <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#efeee9] mb-3 sm:mb-6 uppercase drop-shadow-[0_4px_30px_rgba(255,90,31,0.4)] leading-tight px-2">
-              Do You Love Me, Nigar? <span className="inline-block animate-pulse">❤️</span>
+              Do You Like Me, Nigar? <span className="inline-block animate-pulse">✨</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-xs sm:text-base md:text-xl text-[#efeee9]/75 max-w-sm sm:max-w-xl mx-auto mb-6 sm:mb-12 leading-relaxed font-light px-3">
-              Choose carefully, birthday girl... one answer unlocks pure celebration, and the other might just refuse to be caught! 😉✨
+              Choose carefully, bestie... one answer unlocks pure celebration, and the other might just refuse to be caught! 😉✨
             </p>
 
             {/* Spacious Runaway Interactive Arena */}
@@ -449,7 +449,7 @@ export default function LoveProposalSection() {
             {/* Celebration Pill */}
             <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1 sm:py-2 rounded-full bg-[#ff2a5f]/20 border border-[#ff2a5f]/45 text-[10px] xs:text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#ff758c] font-bold mb-4 sm:mb-8 shadow-[0_0_25px_rgba(255,42,95,0.4)]">
               <PartyPopper className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff2a5f]" />
-              <span>Happy Birthday Nigar &bull; Forever &amp; Always 🎂</span>
+              <span>Happy Birthday Nigar &bull; Best Friends Forever 🎂</span>
               <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ffd166]" />
             </div>
 
@@ -463,16 +463,16 @@ export default function LoveProposalSection() {
 
             {/* Grand Celebration Title */}
             <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-8xl font-black tracking-tight text-white mb-3 sm:mb-6 uppercase drop-shadow-[0_0_35px_rgba(255,42,95,0.85)] leading-tight px-2">
-              I Love You Too, Nigar! <span className="inline-block animate-pulse">❤️</span>
+              I Like You Too, Nigar! <span className="inline-block animate-pulse">✨</span>
             </h1>
 
-            {/* Romantic message personalized for Nigar */}
+            {/* Friendly message personalized for Nigar */}
             <p className="text-sm xs:text-base sm:text-xl md:text-2xl text-[#efeee9] max-w-xl mx-auto mb-3 sm:mb-6 font-medium leading-relaxed px-3">
-              Happy Birthday, <span className="text-[#ff5a1f] font-bold">Nigar</span>! 🌹 You make every single day brighter, sweeter, and infinitely more joyful. Here&apos;s to your special day and endless happiness!
+              Happy Birthday, <span className="text-[#ff5a1f] font-bold">Nigar</span>! 🌟 You make every single day brighter, more fun, and infinitely more joyful. So lucky to have an awesome friend like you!
             </p>
 
             <p className="text-xs sm:text-sm text-white/70 max-w-md mx-auto mb-8 sm:mb-10 leading-relaxed font-light px-4">
-              May your year be as radiant as your smile, filled with laughter, sweet surprises, and all the love in the world. You are truly one of a kind. 💕✨
+              May your year be as radiant as your smile, filled with laughter, great adventures, and all the happiness in the world. You are truly the best friend anyone could ask for! ✨🎉
             </p>
 
             {/* Mobile-friendly Action buttons (comfortable thumb layout) */}
@@ -486,7 +486,7 @@ export default function LoveProposalSection() {
                 className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 rounded-full font-bold text-xs sm:text-base uppercase tracking-wider text-white bg-gradient-to-r from-[#ff5a1f] to-[#ff2a5f] hover:brightness-110 active:scale-95 shadow-[0_0_30px_rgba(255,90,31,0.55)] hover:shadow-[0_0_50px_rgba(255,42,95,0.85)] transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <Sparkles className="w-4 h-4 text-[#ffd166] fill-[#ffd166]" />
-                Send Love Burst! 💖
+                Send Celebration Burst! ✨
               </button>
 
               <button
@@ -498,13 +498,13 @@ export default function LoveProposalSection() {
                 className="w-full sm:w-auto px-5 sm:px-7 py-2.5 sm:py-4 rounded-full font-medium text-xs sm:text-sm tracking-wider text-white/70 hover:text-white active:bg-white/10 bg-white/5 border border-white/15 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                Ask Again, Birthday Queen 🙈
+                Ask Again, Bestie 🙈
               </button>
             </div>
 
             {/* Tap screen hint on celebration */}
             <p className="mt-5 text-[11px] sm:text-xs text-white/40 tracking-wider">
-              ✨ Tap anywhere on the screen for extra love bursts!
+              ✨ Tap anywhere on the screen for extra celebration bursts!
             </p>
           </div>
         )}
