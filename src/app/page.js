@@ -13,7 +13,7 @@ export default function HomePage() {
       <VideoAccordionSection />
       <MasonrySection />
       <LoveProposalSection />
-      {/* <Hero /> */}
+      <Hero />
     </main>
   );
 }
