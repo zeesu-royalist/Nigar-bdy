@@ -168,7 +168,7 @@ export default function VoicesShowcase() {
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
-      className="relative w-full h-[100dvh] min-h-[720px] bg-[#000000] overflow-hidden flex flex-col justify-between items-center select-none cursor-grab active:cursor-grabbing"
+      className="relative w-full h-[100dvh] min-h-[580px] sm:min-h-[720px] bg-[#000000] overflow-hidden flex flex-col justify-between items-center select-none cursor-grab active:cursor-grabbing"
     >
       {/* Cinematic theatrical stage background lighting */}
       <div className="absolute inset-0 pointer-events-none -z-20">
@@ -204,9 +204,9 @@ export default function VoicesShowcase() {
       </div>
 
       {/* Top Header Section (Exact typography & Apple badge) */}
-      <div className="relative z-40 pt-8 sm:pt-12 px-6 flex flex-col items-center text-center max-w-4xl pointer-events-none">
+      <div className="relative z-40 pt-6 sm:pt-12 px-4 sm:px-6 flex flex-col items-center text-center max-w-4xl pointer-events-none">
         {/* Apple-style Featured Pick Badge */}
-        <div className="flex items-center gap-1.5 mb-2.5 sm:mb-3 text-[#f59e0b] text-xs sm:text-sm font-medium tracking-wide">
+        <div className="flex items-center gap-1.5 mb-2 sm:mb-3 text-[#f59e0b] text-xs sm:text-sm font-medium tracking-wide">
           <svg className="w-3.5 h-3.5 fill-[#f59e0b] drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]" viewBox="0 0 170 170">
             <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.69-7.85-12-14.42-6.19-9.35-11.1-20.12-14.75-32.31-3.64-12.18-5.46-23.71-5.46-34.58 0-15.02 3.8-27.42 11.41-37.2 7.6-9.78 17.06-14.77 28.38-14.97 4.13 0 9.17 1.25 15.12 3.75 5.95 2.5 9.87 3.86 11.76 4.08 2.29-.33 6.42-1.8 12.39-4.42 5.97-2.61 11.03-3.83 15.18-3.65 14.15.65 25.13 5.98 32.94 15.99-12.85 7.84-19.16 18.5-18.93 31.98.22 10.45 4.25 19.37 12.09 26.76 7.84 7.39 17.41 11.75 28.71 13.07-2.39 7.4-5.33 14.7-8.81 21.9zM119.22 33.64c0-7.84 2.83-15.35 8.49-22.53 5.66-7.18 12.63-11.75 20.91-13.71.22 1.3.33 2.5.33 3.6 0 7.84-3.05 15.67-9.14 23.49-6.09 7.82-13.27 12.29-21.54 13.4-.11-1.3-.22-2.5-.22-3.6z" />
           </svg>
@@ -219,7 +219,7 @@ export default function VoicesShowcase() {
         </h2>
 
         {/* Subtitle */}
-        <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-[15px] text-[#b4afa7] max-w-xl leading-relaxed font-sans font-light drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+        <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-[15px] text-[#b4afa7] max-w-xl leading-relaxed font-sans font-light drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           Meet AI guides, advisors, or friends whenever the moment calls.
           <br className="hidden sm:inline" /> Simply pick the voice you need, and begin your dialogue.
         </p>
@@ -243,16 +243,16 @@ export default function VoicesShowcase() {
 
             // Calculate scale & opacity based on 3D depth (Z)
             const normalizedZ = (z + radiusZ) / (2 * radiusZ); // 0 (furthest) to 1 (closest)
-            const scale = 0.7 + normalizedZ * 0.42; // 0.7 to 1.12
-            const opacity = 0.4 + normalizedZ * 0.6; // 0.4 to 1.0
+            const scale = (isMobile ? 0.65 : 0.7) + normalizedZ * (isMobile ? 0.35 : 0.42);
+            const opacity = 0.35 + normalizedZ * 0.65; // 0.35 to 1.0
 
             // Slight concave angle facing camera/center
             const rotateY = -Math.sin(cardAngle) * 20;
 
             // Z-index hierarchy:
-            // Back cards (z < 0) sit behind center subject (z < 25)
-            // Front side cards sit in front/beside
-            const zIndex = z < -30 ? 10 : z > 30 ? 35 : 20;
+            // Back cards (z < -20) sit behind center subject (z < 30)
+            // On mobile, keep Nigar (z-[30]) unobstructed as primary hero
+            const zIndex = z < -20 ? 10 : isMobile ? (z > 40 ? 25 : 18) : z > 30 ? 35 : 20;
 
             return (
               <div
@@ -268,7 +268,7 @@ export default function VoicesShowcase() {
                 }}
               >
                 {/* Floating Screen Card Frame */}
-                <div className="relative w-36 sm:w-52 md:w-60 aspect-[16/10] rounded-sm overflow-hidden border border-white/20 bg-black/60 shadow-[0_12px_40px_rgba(0,0,0,0.9)] backdrop-blur-[2px] transition-all duration-300 hover:border-[#f59e0b]/80 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:scale-105 group">
+                <div className="relative w-32 sm:w-52 md:w-60 aspect-[16/10] rounded-sm overflow-hidden border border-white/20 bg-black/60 shadow-[0_12px_40px_rgba(0,0,0,0.9)] backdrop-blur-[2px] transition-all duration-300 hover:border-[#f59e0b]/80 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:scale-105 group">
                   {/* Portrait photo */}
                   <img
                     src={card.url}
@@ -295,21 +295,33 @@ export default function VoicesShowcase() {
       </div>
 
       {/* Center Subject: Ladki in center (Nigar's cutout image in center foreground) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[28] pointer-events-none flex flex-col items-center justify-end">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-[30] pointer-events-none flex flex-col items-center justify-end">
         {/* Soft backlight rim halo right behind her shoulders */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-amber-500/25 blur-3xl pointer-events-none -z-10" />
+        <div
+          className="absolute bottom-16 sm:bottom-24 left-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 rounded-full blur-3xl pointer-events-none -z-10 opacity-70"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(245, 158, 11, 0.42) 0%, rgba(255, 90, 31, 0.18) 45%, transparent 70%)",
+          }}
+        />
 
-        {/* The center girl cutout */}
+        {/* The center girl cutout - Enhanced scale and positioning for mobile & desktop */}
         <img
-          src="/images/ChatGPT Image Sep 17, 2026 at 09_59_52 PM.png"
-          alt="Center Portrait"
-          className="h-[48vh] sm:h-[60vh] md:h-[66vh] max-h-[620px] w-auto object-contain object-bottom drop-shadow-[0_10px_35px_rgba(0,0,0,0.95)] select-none"
+          src="/images/nigar-main-cutout.png"
+          alt="Nigar - Birthday Star"
+          className="h-[58vh] sm:h-[64vh] md:h-[70vh] min-h-[390px] sm:min-h-[460px] max-h-[530px] sm:max-h-[640px] md:max-h-[720px] w-auto max-w-none object-contain object-bottom drop-shadow-[0_14px_45px_rgba(0,0,0,0.95)] select-none pointer-events-none"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.85) 6%, black 14%, black 100%)",
+            maskImage:
+              "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.85) 6%, black 14%, black 100%)",
+          }}
         />
       </div>
 
       {/* Bottom hint / drag instruction & scroll to birthday card */}
-      <div className="relative z-40 pb-5 px-6 flex flex-col items-center gap-2">
-        <span className="text-[11px] sm:text-xs text-white/40 tracking-widest uppercase font-sans pointer-events-none">
+      <div className="relative z-40 pb-4 sm:pb-6 px-4 sm:px-6 flex flex-col items-center gap-2">
+        <span className="text-[10px] sm:text-xs text-white/50 tracking-widest uppercase font-sans pointer-events-none">
           Drag to rotate &bull; Hover to pause
         </span>
         <button
@@ -324,8 +336,7 @@ export default function VoicesShowcase() {
               window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
             }
           }}
-
-          className="flex items-center gap-1.5 text-xs text-[#ff5a1f] hover:text-white transition-all bg-black/60 px-4 py-1.5 rounded-full border border-[#ff5a1f]/40 hover:border-[#ff5a1f] shadow-[0_0_15px_rgba(255,90,31,0.25)] tracking-wider uppercase font-medium cursor-pointer"
+          className="flex items-center gap-1.5 text-xs text-[#ff5a1f] hover:text-white transition-all bg-black/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#ff5a1f]/40 hover:border-[#ff5a1f] shadow-[0_0_15px_rgba(255,90,31,0.25)] tracking-wider uppercase font-medium cursor-pointer"
         >
           <span>Birthday Tribute</span>
           <span className="animate-bounce text-xs leading-none">↓</span>

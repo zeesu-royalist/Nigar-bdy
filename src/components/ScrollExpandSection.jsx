@@ -18,6 +18,8 @@ export default function ScrollExpandSection() {
         useWindowScroll={true}
         objectFit="contain"
         ambientBackdrop={true}
+        ambientBlur="blur-sm"
+        ambientOpacity="opacity-55"
         startWidth={50}
         startHeight={68}
         startRadius={24}
@@ -29,15 +31,14 @@ export default function ScrollExpandSection() {
         overlayScrim={0.5}
         enabled={true}
       >
-
-        <div className="max-w-xl mx-auto px-6 py-8 rounded-2xl bg-black/75 border border-[#ff5a1f]/40 backdrop-blur-md shadow-[0_0_50px_rgba(255,90,31,0.3)]">
-          <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#ff5a1f] font-semibold block mb-2">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-4 text-center">
+          <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#ff5a1f] font-semibold block mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
             Chapter II &bull; Pure Radiance
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-[#efeee9] tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-[#efeee9] tracking-tight mb-3 drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             Every Smile, Everywhere
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-[#efeee9]/80 leading-relaxed font-light">
+          <p className="text-xs sm:text-sm md:text-base text-[#efeee9]/90 leading-relaxed font-light max-w-lg mx-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
             The frame opens up as you scroll, handing the entire spotlight to your unforgettable grace, boundless joy, and magnetic charm.
           </p>
         </div>

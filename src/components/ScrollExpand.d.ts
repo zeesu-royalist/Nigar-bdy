@@ -20,6 +20,8 @@ export interface ScrollExpandProps {
   enabled?: boolean;
   objectFit?: 'cover' | 'contain';
   ambientBackdrop?: boolean;
+  ambientBlur?: string;
+  ambientOpacity?: string;
   children?: ReactNode;
 
   className?: string;

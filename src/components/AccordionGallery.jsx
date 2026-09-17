@@ -14,14 +14,14 @@ export default function AccordionGallery({
   overlayColor = "#060010",
   textColor = "#ffffff",
   height = 500,
-  gap = 8,
+  gap = 10,
   radius = 16,
   expandRatio = 0.52,
   orientation = "horizontal",
   duration = 0.6,
   ease = "power3.out",
-  parallax = 0.4,
-  tilt = 6,
+  parallax = 0.5,
+  tilt = 7,
   stagger = 0.05,
   trigger = "hover",
   showLabels = true,
@@ -43,18 +43,6 @@ export default function AccordionGallery({
 
   const vertical = orientation === "vertical";
   const count = items.length;
-
-  // Track responsive gap & sizing
-  const [effectiveGap, setEffectiveGap] = useState(gap);
-
-  useEffect(() => {
-    const updateGap = () => {
-      setEffectiveGap(window.innerWidth < 640 ? Math.min(gap, 4) : gap);
-    };
-    updateGap();
-    window.addEventListener("resize", updateGap);
-    return () => window.removeEventListener("resize", updateGap);
-  }, [gap]);
 
   // Uncontrolled or controlled active index
   const [internalActive, setInternalActive] = useState(
@@ -84,7 +72,7 @@ export default function AccordionGallery({
   const overlayBg = `linear-gradient(180deg, transparent 40%, color-mix(in srgb, ${overlayColor} 75%, transparent) 100%), color-mix(in srgb, ${overlayColor} calc(var(--ag-dim, 0.35) * 100%), transparent)`;
 
   // Synchronize video playback and audio mute state
-  // IMPORTANT: Pause inactive videos to prevent mobile hardware video decoder exhaustion
+  // Only the active video plays so mobile hardware video decoders never get overwhelmed
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (!vid) return;
@@ -94,7 +82,7 @@ export default function AccordionGallery({
         const playPromise = vid.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            // If autoplay with sound is blocked by browser, retry muted
+            // Autoplay policy fallback: play muted if unmuted is blocked
             vid.muted = true;
             vid.play().catch(() => {});
           });
@@ -105,7 +93,24 @@ export default function AccordionGallery({
     });
   }, [active, isAudioOn]);
 
-  // GSAP Accordion expansion & 3D tilt animation (Identical behavior on mobile and laptop)
+  // Smoothly center active panel horizontally in the scrollable container without moving window
+  useEffect(() => {
+    const container = rootRef.current;
+    const activePanel = panelRefs.current[active];
+    if (container && activePanel) {
+      if (container.scrollWidth > container.clientWidth) {
+        const targetLeft =
+          activePanel.offsetLeft -
+          (container.clientWidth - activePanel.clientWidth) / 2;
+        container.scrollTo({
+          left: Math.max(0, targetLeft),
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [active]);
+
+  // GSAP Accordion expansion & 3D tilt animation
   const applyLayout = useCallback(
     (animate) => {
       const panels = panelRefs.current;
@@ -142,7 +147,7 @@ export default function AccordionGallery({
 
         if (media) {
           const drift = Math.max(-1.5, Math.min(1.5, active - i));
-          const shift = drift * parallax * mediaSize * 0.05;
+          const shift = drift * parallax * mediaSize * 0.06;
           const gray = grayscale ? (isActive ? 0 : 0.85) : 0;
           tl.to(
             media,
@@ -152,7 +157,7 @@ export default function AccordionGallery({
               x: vertical ? 0 : isActive ? 0 : shift,
               y: vertical ? (isActive ? 0 : shift) : 0,
               "--ag-gray": gray,
-              "--ag-dim": isActive ? 0 : 0.45,
+              "--ag-dim": isActive ? 0 : 0.4,
               duration: dur,
               ease,
             },
@@ -214,9 +219,9 @@ export default function AccordionGallery({
     const measure = () => {
       const rect = el.getBoundingClientRect();
       const total = vertical ? rect.height : rect.width;
-      const usable = Math.max(total - effectiveGap * (count - 1), 160);
+      const usable = Math.max(total - gap * (count - 1), 160);
       const size = Math.max(
-        280,
+        300,
         usable * Math.min(Math.max(expandRatio, 0.2), 0.9) * 1.35
       );
       mediaSizeRef.current = size;
@@ -228,7 +233,7 @@ export default function AccordionGallery({
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [applyLayout, effectiveGap, count, expandRatio, vertical]);
+  }, [applyLayout, gap, count, expandRatio, vertical]);
 
   useEffect(() => {
     applyLayout(!firstRunRef.current);
@@ -255,20 +260,6 @@ export default function AccordionGallery({
     setActive(i);
   };
 
-  // Mobile glide: touching and dragging your finger across panels scrubs through them just like hover on laptop
-  const handleTouchMove = (e) => {
-    const touch = e.touches?.[0];
-    if (!touch) return;
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
-    const panel = element?.closest("[data-accordion-index]");
-    if (panel) {
-      const idx = parseInt(panel.getAttribute("data-accordion-index"), 10);
-      if (!isNaN(idx) && idx !== active) {
-        setActive(idx);
-      }
-    }
-  };
-
   const handleKeyDown = (i, e) => {
     if (e.key === "ArrowRight" || e.key === "ArrowDown") {
       e.preventDefault();
@@ -282,13 +273,13 @@ export default function AccordionGallery({
   return (
     <div
       ref={rootRef}
-      onTouchMove={handleTouchMove}
       className={`flex ${
         vertical ? "flex-col" : "flex-row"
-      } w-full max-w-full [perspective:1400px] overflow-hidden py-2 ${className}`}
+      } w-full max-w-full [perspective:1400px] overflow-x-auto no-scrollbar py-2.5 px-2 sm:px-0 ${className}`}
       style={{
-        gap: `${effectiveGap}px`,
+        gap: `${gap}px`,
         height: vertical ? `${Math.round(height * 1.5)}px` : `${height}px`,
+        WebkitOverflowScrolling: "touch",
       }}
       role="list"
       aria-label="Interactive Video and Image Accordion Gallery"
@@ -306,10 +297,10 @@ export default function AccordionGallery({
             ref={(el) => {
               panelRefs.current[i] = el;
             }}
-            className={`group relative block min-w-0 min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#07020d] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] border border-white/10 transition-colors duration-300 ${
+            className={`group relative block min-h-0 flex-[1_1_0] cursor-pointer overflow-hidden bg-[#07020d] no-underline outline-none [transform-style:preserve-3d] [transform-origin:center] border border-white/10 transition-colors duration-300 ${
               isActive
-                ? "border-[#ff5a1f]/75 shadow-[0_15px_40px_-10px_rgba(255,90,31,0.5)]"
-                : "hover:border-[#ff5a1f]/40 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.8)]"
+                ? "border-[#ff5a1f]/75 shadow-[0_15px_40px_-10px_rgba(255,90,31,0.5)] min-w-[260px] sm:min-w-[300px] md:min-w-0"
+                : "hover:border-[#ff5a1f]/40 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.8)] min-w-[48px] sm:min-w-[55px] md:min-w-0"
             } focus-visible:[box-shadow:0_0_0_2px_var(--ag-accent),0_10px_30px_-18px_rgba(0,0,0,0.8)]`}
             style={{
               borderRadius: `${radius}px`,
@@ -379,7 +370,7 @@ export default function AccordionGallery({
             {isActive && (
               <div className="absolute top-3 sm:top-4 left-3 sm:left-4 right-3 sm:right-4 z-10 flex items-center justify-between pointer-events-auto anim-fade-in">
                 {item.tag ? (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#ff5a1f]/40 text-[10px] sm:text-xs text-[#ff5a1f] font-medium tracking-wider uppercase shadow-[0_0_15px_rgba(255,90,31,0.25)] truncate max-w-[120px] sm:max-w-[150px]">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#ff5a1f]/40 text-[10px] sm:text-xs text-[#ff5a1f] font-medium tracking-wider uppercase shadow-[0_0_15px_rgba(255,90,31,0.25)] truncate max-w-[130px] sm:max-w-[150px]">
                     <Sparkles className="w-3 h-3 text-[#ff5a1f] shrink-0" />
                     <span className="truncate">{item.tag}</span>
                   </span>
@@ -437,10 +428,10 @@ export default function AccordionGallery({
               </div>
             )}
 
-            {/* Inactive Card Index Indicator Pill (Subtle on mobile, fully visible on desktop) */}
+            {/* Inactive Card Index Indicator Pill */}
             {!isActive && (
-              <div className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 z-[2] pointer-events-none opacity-40 sm:opacity-75 group-hover:opacity-100 transition-opacity">
-                <span className="text-[8px] sm:text-[10px] font-mono text-[#efeee9]/75 tracking-widest bg-black/70 px-1 sm:px-2 py-0.5 rounded-full border border-white/10 hidden sm:inline-block">
+              <div className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 z-[2] pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity">
+                <span className="text-[8px] sm:text-[10px] font-mono text-[#efeee9]/75 tracking-widest bg-black/70 px-1 sm:px-2 py-0.5 rounded-full border border-white/10">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>

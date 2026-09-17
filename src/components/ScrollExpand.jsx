@@ -30,6 +30,8 @@ export const ScrollExpand = ({
   enabled = true,
   objectFit = "contain",
   ambientBackdrop = true,
+  ambientBlur = "blur-md",
+  ambientOpacity = "opacity-50",
   children,
   className = "",
   style,
@@ -239,7 +241,7 @@ export const ScrollExpand = ({
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-black">
         {ambientBackdrop && (
           <video
-            className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-35 scale-110 pointer-events-none"
+            className={`absolute inset-0 w-full h-full object-cover ${ambientBlur} ${ambientOpacity} scale-105 pointer-events-none`}
             src={cleanSrc}
             poster={poster}
             autoPlay
@@ -268,7 +270,7 @@ export const ScrollExpand = ({
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden bg-black">
         {ambientBackdrop && (
           <img
-            className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-40 scale-110 pointer-events-none select-none"
+            className={`absolute inset-0 w-full h-full object-cover ${ambientBlur} ${ambientOpacity} scale-105 pointer-events-none select-none`}
             src={cleanSrc}
             alt=""
             aria-hidden="true"
