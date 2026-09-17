@@ -1,0 +1,88 @@
+export const birthdayGirlVideos = [
+  {
+    id: 1,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM.mp4",
+    label: "Golden Laughs",
+    subtitle: "Reel 01 • Pure Joy",
+    tag: "Candid",
+  },
+  {
+    id: 2,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-2.mp4",
+    label: "Radiant Spark",
+    subtitle: "Reel 02 • Unfiltered Smile",
+    tag: "Energy",
+  },
+  {
+    id: 3,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-3.mp4",
+    label: "Timeless Grace",
+    subtitle: "Reel 03 • Serene Charm",
+    tag: "Grace",
+  },
+  {
+    id: 4,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-4.mp4",
+    label: "Queen's Aura",
+    subtitle: "Reel 04 • High Spirits",
+    tag: "Birthday Queen",
+  },
+  {
+    id: 5,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-5.mp4",
+    label: "Sweet Memories",
+    subtitle: "Reel 05 • Gentle Moments",
+    tag: "Cherished",
+  },
+  {
+    id: 6,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-6.mp4",
+    label: "Carefree Vibe",
+    subtitle: "Reel 06 • Boundless Glow",
+    tag: "Vibrant",
+  },
+  {
+    id: 7,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-7.mp4",
+    label: "Starlight Reverie",
+    subtitle: "Reel 07 • Golden Hour",
+    tag: "Cinematic",
+  },
+  {
+    id: 8,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.08.16 PM-8.mp4",
+    label: "Heartfelt Giggles",
+    subtitle: "Reel 08 • Magic in Motion",
+    tag: "Laughter",
+  },
+  {
+    id: 9,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.51.48 PM.mp4",
+    label: "Enchanting Mood",
+    subtitle: "Reel 09 • Soft Radiance",
+    tag: "Elegance",
+  },
+  {
+    id: 10,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.51.49 PM.mp4",
+    label: "Celebration Rush",
+    subtitle: "Reel 10 • Euphoria",
+    tag: "Joy",
+  },
+  {
+    id: 11,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.51.50 PM.mp4",
+    label: "Eternal Charm",
+    subtitle: "Reel 11 • Queen Energy",
+    tag: "Spotlight",
+  },
+  {
+    id: 12,
+    video: "/birthday girl videos/WhatsApp Video 2026-09-17 at 9.51.52 PM.mp4",
+    label: "Forever Nigar",
+    subtitle: "Reel 12 • The Grand Finale",
+    tag: "Celebration",
+  },
+];
+
+export default birthdayGirlVideos;
